@@ -4,13 +4,14 @@
 
 from src.core import modules
 from src.modules import DatabaseModule
+from src.utils import wlogger
 
 def setup_modules():
     try:
         modules.registry('database', DatabaseModule())
-        print("Подключение с базой данных успешно установлено.")
+        wlogger.startup("Подключение с базой данных успешно установлено.")
     except Exception as message:
-        print(message)
+        wlogger.critical(message)
         exit(-1)
 
 def startup():

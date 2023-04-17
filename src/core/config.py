@@ -1,4 +1,4 @@
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 
 class Config:
@@ -12,6 +12,11 @@ class Config:
         self.MYSQL_USER = getenv('MYSQL_USER')
         self.MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
         self.MYSQL_DATABASE = getenv('MYSQL_DATABASE')
+        self.LOG_FILE = getenv('LOG_FILE')
+        self.LOG_DIR_PATH = getenv('LOG_DIR_PATH')
+        self.LOG_FILE_PATH = path.join(self.LOG_DIR_PATH, self.LOG_FILE)
+        self.LOG_ROTATION = getenv('LOG_ROTATION')
+        self.LOG_FORMAT = getenv('LOG_FORMAT')
 
 
 config = Config()
